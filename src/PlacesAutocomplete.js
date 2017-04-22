@@ -227,7 +227,7 @@ class PlacesAutocomplete extends Component {
   }
 
   render() {
-    const { classNames, styles } = this.props
+    const { classNames, styles, label } = this.props
     const { autocompleteItems } = this.state
     const inputProps = this.getInputProps()
 
@@ -237,6 +237,8 @@ class PlacesAutocomplete extends Component {
         style={this.inlineStyleFor('root')}
         className={this.classNameFor('root')}>
         <input {...inputProps} />
+	      <div className={this.classNameFor('placesLabel')}>{label}</div>
+	      <div className={this.classNameFor('placesBar')}/>
         {autocompleteItems.length > 0 && (
           <div
             id="PlacesAutocomplete__autocomplete-container"
@@ -271,6 +273,7 @@ PlacesAutocomplete.propTypes = {
       throw new Error('\'inputProps\' must have \'onChange\'.')
     }
   },
+  label: PropTypes.string,
   onError: PropTypes.func,
   clearItemsOnError: PropTypes.bool,
   onSelect: PropTypes.func,
@@ -287,7 +290,9 @@ PlacesAutocomplete.propTypes = {
     input: PropTypes.object,
     autocompleteContainer: PropTypes.object,
     autocompleteItem: PropTypes.object,
-    autocompleteItemActive: PropTypes.object
+    autocompleteItemActive: PropTypes.object,
+	  placesLabel: PropTypes.object,
+	  placesBar: PropTypes.object
   }),
   options: PropTypes.shape({
     bounds: PropTypes.object,
