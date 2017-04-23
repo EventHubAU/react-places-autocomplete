@@ -242,7 +242,6 @@ class PlacesAutocomplete extends Component {
     } = this.props
     const { autocompleteItems } = this.state
     const inputProps = this.getInputProps()
-	  console.log(inputProps)
 
     return (
       <div
