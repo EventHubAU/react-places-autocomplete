@@ -7,6 +7,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import defaultStyles from './defaultStyles'
+import Input from 'react-toolbox/lib/input/Input'
 
 class PlacesAutocomplete extends Component {
   constructor(props) {
@@ -162,13 +163,13 @@ class PlacesAutocomplete extends Component {
     })
   }
 
-  handleInputChange(event) {
-    this.props.inputProps.onChange(event.target.value)
-    if (!event.target.value) {
+  handleInputChange(value) {
+    this.props.inputProps.onChange(value)
+    if (!value) {
       this.clearAutocomplete()
       return
     }
-    this.autocompleteService.getPlacePredictions({ ...this.props.options, input: event.target.value }, this.autocompleteCallback)
+    this.autocompleteService.getPlacePredictions({ ...this.props.options, input: value }, this.autocompleteCallback)
   }
 
   handleInputOnBlur(event) {
@@ -212,31 +213,55 @@ class PlacesAutocomplete extends Component {
     return {
       ...defaultInputProps,
       ...this.props.inputProps,
-      onChange: (event) => {
-        this.handleInputChange(event)
+      onChange: (value) => {
+        this.handleInputChange(value)
       },
       onKeyDown: (event) => {
         this.handleInputKeyDown(event)
       },
       onBlur: (event) => {
         this.handleInputOnBlur(event)
-      },
-      style: this.inlineStyleFor('input'),
-      className: this.classNameFor('input'),
+      }
     }
   }
 
   render() {
-    const { classNames, styles } = this.props
+    const {
+    	classNames,
+	    styles,
+	    label,
+	    error,
+	    className,
+	    disabled,
+	    floating,
+	    hint,
+	    icon,
+	    maxLength,
+	    multiline,
+	    rows
+    } = this.props
     const { autocompleteItems } = this.state
     const inputProps = this.getInputProps()
+	  console.log(inputProps)
 
     return (
       <div
         id="PlacesAutocomplete__root"
         style={this.inlineStyleFor('root')}
         className={this.classNameFor('root')}>
-        <input {...inputProps} />
+        <Input
+	        {...inputProps}
+	        label={label}
+          error={error}
+          className={className}
+	        disabled={disabled}
+		      floating={floating}
+		      hint={hint}
+		      icon={icon}
+		      maxLength={maxLength}
+		      multiline={multiline}
+		      rows={rows}
+        />
         {autocompleteItems.length > 0 && (
           <div
             id="PlacesAutocomplete__autocomplete-container"
