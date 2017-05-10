@@ -81,7 +81,7 @@ class PlacesAutocomplete extends Component {
     if (activeItem === undefined) {
       this.handleEnterKeyWithoutActiveItem()
     } else {
-      this.selectAddress(activeItem.suggestion, activeItem.placeId)
+      this.selectAddress(activeItem, activeItem.placeId)
     }
   }
 
@@ -270,7 +270,7 @@ class PlacesAutocomplete extends Component {
               <div
                 key={p.placeId}
                 onMouseOver={() => this.setActiveItemAtIndex(p.index)}
-                onMouseDown={() => this.selectAddress(p.suggestion, p.placeId)}
+                onMouseDown={() => this.selectAddress(p, p.placeId)}
                 style={ p.active ? this.inlineStyleFor('autocompleteItem', 'autocompleteItemActive') :this.inlineStyleFor('autocompleteItem') }
                 className={ p.active ? this.classNameFor('autocompleteItem', 'autocompleteItemActive') : this.classNameFor('autocompleteItem') }>
                 {this.props.autocompleteItem({ suggestion: p.suggestion, formattedSuggestion: p.formattedSuggestion })}

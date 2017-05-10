@@ -211,7 +211,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      if (activeItem === undefined) {
 	        this.handleEnterKeyWithoutActiveItem();
 	      } else {
-	        this.selectAddress(activeItem.suggestion, activeItem.placeId);
+	        this.selectAddress(activeItem, activeItem.placeId);
 	      }
 	    }
 	  }, {
@@ -428,7 +428,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                  return _this3.setActiveItemAtIndex(p.index);
 	                },
 	                onMouseDown: function onMouseDown() {
-	                  return _this3.selectAddress(p.suggestion, p.placeId);
+	                  return _this3.selectAddress(p, p.placeId);
 	                },
 	                style: p.active ? _this3.inlineStyleFor('autocompleteItem', 'autocompleteItemActive') : _this3.inlineStyleFor('autocompleteItem'),
 	                className: p.active ? _this3.classNameFor('autocompleteItem', 'autocompleteItemActive') : _this3.classNameFor('autocompleteItem') },

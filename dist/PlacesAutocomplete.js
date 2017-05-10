@@ -132,7 +132,7 @@ var PlacesAutocomplete = function (_Component) {
       if (activeItem === undefined) {
         this.handleEnterKeyWithoutActiveItem();
       } else {
-        this.selectAddress(activeItem.suggestion, activeItem.placeId);
+        this.selectAddress(activeItem, activeItem.placeId);
       }
     }
   }, {
@@ -349,7 +349,7 @@ var PlacesAutocomplete = function (_Component) {
                   return _this3.setActiveItemAtIndex(p.index);
                 },
                 onMouseDown: function onMouseDown() {
-                  return _this3.selectAddress(p.suggestion, p.placeId);
+                  return _this3.selectAddress(p, p.placeId);
                 },
                 style: p.active ? _this3.inlineStyleFor('autocompleteItem', 'autocompleteItemActive') : _this3.inlineStyleFor('autocompleteItem'),
                 className: p.active ? _this3.classNameFor('autocompleteItem', 'autocompleteItemActive') : _this3.classNameFor('autocompleteItem') },
